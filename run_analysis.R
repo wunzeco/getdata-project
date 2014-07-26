@@ -90,3 +90,33 @@ label_activities <- function(df, activity_name_file = "activity_labels.txt") {
     head(df[1:2,1:5])
 }
 
+## This function computes the average of each variable for each activity and each 
+## subject, and returns the resulting data frame. 
+summarize_data <- function(df) {
+    library(plyr)
+    ddply(df, .(subject, activity), function(x) colMeans(x[-c(1,2)]))
+}
+
+## Main function
+## This function takes as argument the raw data directory and performs analysis
+## on the data sets as per assignment requirements/instructions.
+run_analysis <- function(directory) {
+    ##   1. Merges the training and the test sets to create one data set.
+    ##   3. Uses descriptive activity names to name the activities in the data set
+    d <- merge_data(directory)
+    
+    ##   2. Extracts only the measurements on the mean and standard deviation for each measurement. 
+    e <- extract_mean_std(d)
+    
+    ##   4. Appropriately labels the data set with descriptive variable names. 
+    act_labels_file = paste(directory, "/", "activity_labels.txt", sep = "")
+    label_activities(d, act_labels_file)
+    
+    ##   5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
+    s <- summarize_data(d)
+    
+    list( merge_data = d,
+          extract = e, 
+          summarize_data = s)
+}
+    
