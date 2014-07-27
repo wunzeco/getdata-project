@@ -26,7 +26,8 @@ The main function of the script is called run_analysis(). It takes as argument t
 The **merged** and **summarized** data sets are written to separate files under the current working directory called **merged\_data.txt** and **summarized\_data.txt** respectively.
 
 ```
-r <- run_analysis(directory = "../UCI HAR Dataset/")
+directory = "../UCI HAR Dataset"
+r <- run_analysis(directory)
 names(r)
 ## [1] "merged_data"     "extract"        "summarized_data"
 ```
@@ -36,14 +37,15 @@ names(r)
 ```
 ##   1. Merges the training and the test sets to create one data set.
 ##   3. Uses descriptive activity names to name the activities in the data set
+directory = "../UCI HAR Dataset"
 d <- merge_data(directory)
-write.table(d, file = "./merged_data.txt")
     
 ##   2. Extracts only the measurements on the mean and standard deviation for each measurement. 
 e <- extract_mean_std(d)
     
 ##   4. Appropriately labels the data set with descriptive variable names. 
 label_activities(d, directory)
+write.table(d, file = "./merged_data1.txt")
     
 ##   5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
 s <- summarize_data(d)
