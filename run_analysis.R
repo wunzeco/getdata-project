@@ -40,6 +40,8 @@ prep_dataset <- function() {
 ##   -  uses the features vector (from features.txt) to labels the data set with 
 ##      descriptive variable names
 ##   -  returns the resulting data frame, which is a merge of both data sets. 
+## Arguments:
+##  -  directory: full/relative path of raw data set directory
 merge_data <- function(directory) {
     prev_wd <- getwd()
     setwd(directory)
@@ -71,6 +73,8 @@ merge_data <- function(directory) {
 
 ## This function extracts only the measurements on the mean and standard deviation 
 ## for each measurement. 
+## Arguments:
+##  -  df: merged data set
 extract_mean_std <- function(df) {
     mean_columns <- grep("mean()", names(df))
     std_columns <- grep("std()", names(df))
@@ -78,8 +82,12 @@ extract_mean_std <- function(df) {
 }
 
 ## This function uses descriptive activity names from "activity_labels.txt" to 
-## name the activities in the data set
-label_activities <- function(df, activity_name_file = "activity_labels.txt") {
+## name the activities in the data set. 
+## Arguments:
+##  -  df: data frame of merged data
+##  -  directory: full/relative path of raw data set directory
+label_activities <- function(df, directory) {
+    activity_name_file = paste(directory, "/", "activity_labels.txt", sep="")
     if(!file.exists(activity_name_file)) error("Labels file does not exist")
     a <- read.table(activity_name_file)
     activities <- a[[2]]
@@ -92,6 +100,8 @@ label_activities <- function(df, activity_name_file = "activity_labels.txt") {
 
 ## This function computes the average of each variable for each activity and each 
 ## subject, and returns the resulting data frame. 
+## Argument
+##  -  df: merged data set
 summarize_data <- function(df) {
     library(plyr)
     ddply(df, .(subject, activity), function(x) colMeans(x[-c(1,2)]))
@@ -104,16 +114,17 @@ run_analysis <- function(directory = "./UCI HAR Dataset") {
     ##   1. Merges the training and the test sets to create one data set.
     ##   3. Uses descriptive activity names to name the activities in the data set
     d <- merge_data(directory)
+    write.table(d, file = "./merged_data.txt")
     
     ##   2. Extracts only the measurements on the mean and standard deviation for each measurement. 
     e <- extract_mean_std(d)
     
     ##   4. Appropriately labels the data set with descriptive variable names. 
-    act_labels_file = paste(directory, "/", "activity_labels.txt", sep = "")
-    label_activities(d, act_labels_file)
+    label_activities(d, directory)
     
     ##   5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
     s <- summarize_data(d)
+    write.table(d, file = "./summarized_data.txt")
     
     list( merged_data = d,
           mean_std_extract = e, 
