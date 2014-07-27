@@ -1,23 +1,23 @@
 # Code Book
 
 ## Variables
-| Variable name |  Variable label   |
-| ------------- | -----------       |
-| subject  | Subject identifier | 
-| activity | Name of activity. The selection of activities are given below  |    
-| tBodyAcc-XYZ      | Body acceleration time domain signals     |
-| tGravityAcc-XYZ   | Gravity acceleration time domain signals  |
-| tBodyAccJerk-XYZ  | Body acceleration time domain Jerk signals |
-| tBodyGyro-XYZ     | Body gyroscope time domain signals        |
-| tBodyGyroJerk-XYZ | Body gyroscope time domain Jerk signals   |
-| tBodyAccMag       | Body acceleration time domain Mag signals |
+| Variable name     |  Variable label   |
+| -------------     | -----------       |
+| subject           | Subject identifier                            | 
+| activity          | Name of activity. The selection of activities are given below  |    
+| tBodyAcc-XYZ      | Body acceleration time domain signals         |
+| tGravityAcc-XYZ   | Gravity acceleration time domain signals      |
+| tBodyAccJerk-XYZ  | Body acceleration time domain Jerk signals    |
+| tBodyGyro-XYZ     | Body gyroscope time domain signals            |
+| tBodyGyroJerk-XYZ | Body gyroscope time domain Jerk signals       |
+| tBodyAccMag       | Body acceleration time domain Mag signals     |
 | tGravityAccMag    | Gravity acceleration time domain Mag signals  |
 | tBodyAccJerkMag   | Body acceleration time domain Jerk-Mag signals |
-| tBodyGyroMag      | Body gyroscope time domain Mag signals |
-| tBodyGyroJerkMag  | Body gyroscope time domain Jerk-Mag signals |
+| tBodyGyroMag      | Body gyroscope time domain Mag signals        |
+| tBodyGyroJerkMag  | Body gyroscope time domain Jerk-Mag signals   |
 | fBodyAcc-XYZ      | Body acceleration frequency domain signals    |
 | fBodyAccJerk-XYZ  | Body acceleration frequency domain Jerk signals   |
-| fBodyGyro-XYZ     | Body gyroscope frequency domain signals   |
+| fBodyGyro-XYZ     | Body gyroscope frequency domain signals       |
 | fBodyAccMag       | Body acceleration frequency domain Mag signals |
 | fBodyAccJerkMag   | Body acceleration frequency domain Jerk-Mag signals |
 | fBodyGyroMag      | Body gyroscope frequency domain Mag signals   |
