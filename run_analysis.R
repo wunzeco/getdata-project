@@ -43,7 +43,7 @@ prep_dataset <- function() {
 merge_data <- function(directory) {
     prev_wd <- getwd()
     setwd(directory)
-    message("Current working directory: ", getwd())
+    message("Currently in data set directory: ", getwd())
     
     p <- prep_dataset()
     
@@ -100,7 +100,7 @@ summarize_data <- function(df) {
 ## Main function
 ## This function takes as argument the raw data directory and performs analysis
 ## on the data sets as per assignment requirements/instructions.
-run_analysis <- function(directory) {
+run_analysis <- function(directory = "./UCI HAR Dataset") {
     ##   1. Merges the training and the test sets to create one data set.
     ##   3. Uses descriptive activity names to name the activities in the data set
     d <- merge_data(directory)
@@ -115,8 +115,8 @@ run_analysis <- function(directory) {
     ##   5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
     s <- summarize_data(d)
     
-    list( merge_data = d,
-          extract = e, 
-          summarize_data = s)
+    list( merged_data = d,
+          mean_std_extract = e, 
+          summarized_data = s )
 }
     
