@@ -24,6 +24,7 @@
 | fBodyGyroJerkMag  | Body gyroscope frequency domain Jerk-Mag signals |
 
 The set of variables that were estimated from the above signals are: 
+
 | Variable name |  Variable label   |
 | ------------- | -----------       |
 | mean()        | Mean value                |
@@ -55,6 +56,7 @@ tBodyGyroJerkMean
 Please refer to features.txt and features_info.txt for further details.
 
 **Activity label**
+
 | Value | Label |
 | ----- | ----- |
 | 1 | WALKING           |
